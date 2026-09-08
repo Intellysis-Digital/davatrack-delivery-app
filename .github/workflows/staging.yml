@@ -1,0 +1,26 @@
+name: Staging Promotion
+
+on:
+  push:
+    branches: [staging]
+
+jobs:
+  build-and-update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test -- --coverage
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - name: Publish OTA update to staging channel
+        run: eas update --branch staging --message "Staging update from ${{ github.sha }}"
+      - name: Build staging binary
+        run: eas build --platform all --profile staging --non-interactive
