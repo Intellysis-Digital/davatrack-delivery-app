@@ -16,7 +16,16 @@ export default {
     version: '1.0.0',
     extra: {
       apiUrl: process.env.API_URL,
-      env: process.env.ENV,
+      env: process.env.APP_ENV,
+      eas: {
+        projectId: "0c4b826d-1aae-49e6-93b6-d1a572dac6b1"
+      }
     },
+    android: {
+      package: "com.intellysisdigital.davatrackdelivery"   // your chosen package name
+    },
+    ios: {
+      bundleIdentifier: "com.intellysisdigital.davatrackdelivery"  // same string works
+    }
   },
 };

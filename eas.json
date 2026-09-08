@@ -10,6 +10,12 @@
         "APP_ENV": "development"
       }
     },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "staging"
+      }
+    },
     "staging": {
       "distribution": "internal",
       "env": {

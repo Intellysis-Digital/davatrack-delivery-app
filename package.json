@@ -31,6 +31,7 @@
   "devDependencies": {
     "@types/jest": "29.5.14",
     "@types/react": "~19.2.2",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.5",
     "eslint-config-expo": "~57.0.2",
     "eslint-config-prettier": "^10.1.8",
@@ -48,9 +49,9 @@
     "web": "expo start --web",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "start:dev": "APP_ENV=development npx expo start",
-    "start:staging": "APP_ENV=staging npx expo start",
-    "start:prod": "APP_ENV=production npx expo start"
+    "start:dev": "cross-env APP_ENV=development npx expo start --dev-client",
+    "start:staging": "cross-env APP_ENV=staging npx expo start --dev-client",
+    "start:prod": "cross-env APP_ENV=production npx expo start --dev-client"
   },
   "private": true
 }
